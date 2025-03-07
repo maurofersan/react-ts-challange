@@ -14,7 +14,7 @@ Asegúrate de tener instalado:
 Clona el repositorio y accede a la carpeta del proyecto:
 
 ```sh
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/maurofersan/react-ts-challange.git
 cd frontend
 ```
 
