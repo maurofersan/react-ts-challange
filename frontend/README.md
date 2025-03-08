@@ -80,5 +80,4 @@ Tras iniciar sesión exitosamente, se almacena un token en el `localStorage`.
 
 ## Notas
 
-- La autenticación es simulada con un token estático.
-- La lista de 2000 elementos se obtiene desde el backend en NestJS.
+- La lista de 2000 elementos se obtiene paginada desde el backend en NestJS.

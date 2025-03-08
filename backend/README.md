@@ -55,17 +55,21 @@ npm run start:prod
 ### Obtener datos
 
 ```http
-GET /data
+GET /data?page={page}&limit={limit}
 ```
 
-Devuelve un array de 2000 objetos con la siguiente estructura:
+Devuelve la siguiente estructura:
 
 ```json
-[
-  { "id": "1", "name": "Item 1" },
-  { "id": "2", "name": "Item 2" },
-  ...
-]
+{
+  "items": [
+    { "id": "101", "name": "Item 101" },
+    { "id": "102", "name": "Item 102" }
+     ...
+  ],
+  "page": 2,
+  "totalPages": 20,
+}
 ```
 
 ### Autenticación
