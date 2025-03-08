@@ -1,9 +1,11 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { DataResponse } from './dataResponse.interface';
+import { JwtAuthGuard } from 'src/guards/jwtAuth.guard';
 
 @Controller('data')
 export class DataController {
   @Get()
+  @UseGuards(JwtAuthGuard)
   getData(
     @Query('page') page = '1',
     @Query('limit') limit = '100',

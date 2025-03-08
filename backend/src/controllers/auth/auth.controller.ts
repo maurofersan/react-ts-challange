@@ -5,9 +5,12 @@ import {
   HttpStatus,
   Post,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 
 @Controller('auth')
 export class AuthController {
+  constructor(private readonly jwtService: JwtService) {}
+
   @Post('login')
   login(@Body() body: { email: string; password: string }) {
     const { email, password } = body;
@@ -22,9 +25,12 @@ export class AuthController {
       );
     }
 
+    const payload = { email, role: 'user' };
+
+    const token = this.jwtService.sign(payload);
+
     return {
-      token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0NTY3ODkwIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDE5NTM4MjJ9.s5B7N1qJ3a9mLq8YFkQz2yX1Uo6KpB3D4Tz9LxV8P0M',
+      token,
     };
   }
 }
