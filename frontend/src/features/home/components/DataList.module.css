@@ -14,7 +14,12 @@
   font-size: 1rem;
 }
 
-.loading,
+.loading {
+  height: 350px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 .error {
   text-align: center;
   font-size: 1.2rem;

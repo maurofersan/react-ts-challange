@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import styles from "./DataList.module.css";
 import { useHome } from "../hooks/useHome";
+import Paginator from "../../../shared/components/paginator/Paginator";
 
 const Row = ({
   index,
@@ -20,24 +21,33 @@ const Row = ({
 };
 
 export const DataList: React.FC = () => {
-  const { data, isLoading, error } = useHome();
+  const [page, setPage] = useState(1);
+  const { data, totalPages, error, fetchData } = useHome();
 
-  if (isLoading) {
-    return <p className={styles.loading}>Loading...</p>;
-  }
+  const handlePageChange = async (newPage: number) => {
+    await fetchData(newPage);
+    setPage(newPage);
+  };
+
   if (error) {
     return <p className={styles.error}>Error: {error}</p>;
   }
 
   return (
-    <List
-      height={350}
-      itemCount={data.length}
-      itemSize={35}
-      width={"100%"}
-      style={{ overflowX: "hidden" }}
+    <Paginator
+      page={page}
+      totalPages={totalPages}
+      onPageChange={handlePageChange}
     >
-      {Row}
-    </List>
+      <List
+        height={350}
+        itemCount={data.length}
+        itemSize={35}
+        width={"100%"}
+        style={{ overflowX: "hidden" }}
+      >
+        {Row}
+      </List>
+    </Paginator>
   );
 };

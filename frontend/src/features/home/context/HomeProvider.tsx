@@ -11,13 +11,15 @@ export const HomeProvider: React.FC<HomeProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(homeReducer, initialHomeState);
 
   useEffect(() => {
-    fetchDataEffect(dispatch);
+    fetchDataEffect(1, dispatch);
   }, []);
 
+  const fetchData = async (page: number): Promise<void> => {
+    fetchDataEffect(page, dispatch);
+  };
+
   return (
-    <HomeContext.Provider
-      value={{ ...state, fetchData: () => fetchDataEffect(dispatch) }}
-    >
+    <HomeContext.Provider value={{ ...state, fetchData }}>
       {children}
     </HomeContext.Provider>
   );

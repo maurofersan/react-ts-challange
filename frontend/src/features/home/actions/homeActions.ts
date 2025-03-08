@@ -10,7 +10,7 @@ export interface FetchDataRequest {
 
 export interface FetchDataSuccess {
   type: typeof FETCH_DATA_SUCCESS;
-  payload: IDataResponse[];
+  payload: IDataResponse;
 }
 
 export interface FetchDataFailure {
@@ -22,9 +22,11 @@ export const fetchDataRequest = (): FetchDataRequest => ({
   type: FETCH_DATA_REQUEST,
 });
 
-export const fetchDataSuccess = (data: IDataResponse[]): FetchDataSuccess => ({
+export const fetchDataSuccess = (
+  dataResponse: IDataResponse
+): FetchDataSuccess => ({
   type: FETCH_DATA_SUCCESS,
-  payload: data,
+  payload: dataResponse,
 });
 
 export const fetchDataFailure = (error: string): FetchDataFailure => ({
