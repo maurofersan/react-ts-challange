@@ -19,7 +19,8 @@ const Paginator: React.FC<PaginatorProps> = ({
       {children}
       <div className={styles.paginator}>
         <button onClick={() => onPageChange(page - 1)} disabled={page <= 1}>
-          ◀ Previous
+          <span className={styles.arrowLeft} />
+          Previous
         </button>
         <span>
           Page {page} of {totalPages}
@@ -28,7 +29,8 @@ const Paginator: React.FC<PaginatorProps> = ({
           onClick={() => onPageChange(page + 1)}
           disabled={page >= totalPages}
         >
-          Next ▶
+          Next
+          <span className={styles.arrowRight} />
         </button>
       </div>
     </div>

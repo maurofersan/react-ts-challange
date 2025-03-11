@@ -15,9 +15,30 @@ button {
   color: white;
   border-radius: 5px;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.arrowRight {
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-left: 11px solid #fff;
+  border-bottom: 7px solid transparent;
+  display: inline-block;
+}
+
+.arrowLeft {
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-right: 11px solid #fff;
+  border-bottom: 7px solid transparent;
+  display: inline-block;
 }
